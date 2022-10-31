@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="page">
+<body class="wrapper">
     <header class="header">
         <div class="container header__container">
-            <a href="#" class="logo"><img src="./icons/1.jpeg" alt="Логотип" class="logo__img"></img>50 оттенков настроения кота Саймона</a>
+            <a href="#" class="logo__name"><img src="./icons/1.jpeg" alt="Логотип" class="logo__img"></img>50 оттенков настроения кота Саймона</a>
         </div>
     </header>
     <main class="main container">
         <div>
-            <button class="btn" id="add">Добавь настроение котика</button>
+            <button class="button" id="add">Добавь настроение котика</button>
         </div>
         <section class="cards">
             <h2 class="visually-hidden">Список котов Саймона</h2>
@@ -35,22 +35,22 @@
     </footer>
     <div class="popup popup-add-cats">
         <div class="popup__container" >
-            <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
-            <h2>Добавить настроение</h2>
+            <button class="popup__close button"><i class="fa-solid fa-xmark"></i></button>
+            <h2 style="margin-top: 0px;">Добавить настроение <br>кота Саймона</h2>
+            <div class="form__image"></div>
             <form class="form" id="popup-form-cat">
-                <div class="form__image"></div>
-                <input type="number" class="form__input" name="id" min="1" required placeholder="id">
-                <input type="number" class="form__input" name="age" placeholder="Возраст">
-                <input type="text" class="form__input" name="name" required placeholder="Какой кот сегодня?">
-                <input type="number" class="form__input" name="rate" placeholder="Рейтинг (0-10)" min="0" max="10">
+                <input type="number" class="form__input" name="id" min="1" required placeholder="id приключения">
+                <input type="url" class="form__input form__input_image" name="img_link" placeholder="Успел сделать фото?">
+                <input type="text" class="form__input" name="name" required placeholder="Какое настроение у кота?">
+                <input type="number" class="form__input" name="age" placeholder="Возраст кота">
                 <textarea name="description" class="form__input form__textarea" placeholder="Что произошло?"></textarea>
-                <label class="form__checkbox-wrap">
+                <input type="number" class="form__input" name="rate" placeholder="Рейтинг (0-10)" min="0" max="10">
+                <label class="form__checkbox-wrapper">
                     <input type="checkbox" name="favourite" class="form__checkbox " placeholder="">
                     <span class="form__label">Любимая эмоция</span>  
                     <span class="form__fake-checkbox"><i class="fa-regular fa-circle-check"></i></span>
                 </label>
-                <input type="url" class="form__input form__input_image" name="img_link" placeholder="Ссылка на фото">
-                <button type="submit" class="form__btn btn">Добавить котика</button>
+                <button type="submit" class="form__button button">Добавить</button>
             </form>
         </div>
     </div>
