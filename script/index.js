@@ -33,11 +33,16 @@ function handleFormAddCat(e){
     popupAddCat.close();
 }
 
-cats.forEach(function (catData) {
-    const cardInstance = new Card(catData, "#card-template");
-    const newCardElement = cardInstance.getElement();
-    cardsContainer.append(newCardElement);
-});
+api.getAllCats()
+    .then(({data})=>{
+        data.forEach(function (catData) {
+            const cardInstance = new Card(catData, "#card-template");
+            const newCardElement = cardInstance.getElement();
+            cardsContainer.append(newCardElement);
+        });
+    })
+
+
 
 const popupAddCat = new Popup('popup-add-cats');
 
@@ -47,4 +52,4 @@ btnOpenPopupForm.addEventListener('click', () => popupAddCat.open());
 formCatAdd.addEventListener('submit', handleFormAddCat);
 
 popupAddCat.close();
-console.log(popupAddCat);
+// console.log(popupAddCat);
