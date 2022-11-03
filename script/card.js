@@ -1,6 +1,7 @@
 class Card {
     constructor(dataCat, selectorTemplate) {
         this._data = dataCat;
+        this._handleCatTitle = handleCatTitle;
         this._selectorTemplate = selectorTemplate;
     }
 
@@ -10,17 +11,39 @@ class Card {
 
     getElement() {
         this.element = this._getTempate().cloneNode(true); 
-        const cardTitle = this.element.querySelector(".card__name");
-        const cardImage = this.element.querySelector(".card__image");
-        const cardLike = this.element.querySelector(".card__like");
+        this.cardTitle = this.element.querySelector(".card__name");
+        this.cardImage = this.element.querySelector(".card__image");
+        this.cardLike = this.element.querySelector(".card__like");
 
         if (!this._data.favourite) {
-        cardLike.remove();
+        this.cardLike.remove();
     }
 
-        cardTitle.textContent = this._data.name;
-        cardImage.src = this._data.img_link;
+    this.cardTitle.textContent = this._data.name;
+        this.cardImage.src = this._data.img_link;
 
+        this.setEventListener();
         return this.element;
     }
+
+    getData(){
+        return this._data;
+    }
+
+    getId(){
+        return this._data._id;
+    }
+
+    setData(newData) {
+        this._data = newData;
+    }
+
+    deteteView() {
+        this.element.remove();
+        this.element = null;
+    }
+
+        setEventListener(){
+            this.cardTitle.addEventListener('click', () => this._handleCatTitle(this));
+        }
     }

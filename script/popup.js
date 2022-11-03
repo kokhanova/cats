@@ -6,10 +6,15 @@ class Popup {
     }
 
     _handleEscUp(evt) {
-        // console.log(evt.key);
         if(evt.key === 'Escape') {
             this.close();
         }
+    }
+
+    setContent(contentNode){
+        const containerContent = this.popup.querySelector('.popup__content');
+        containerContent.innerHTML = '';
+        containerContent.append(contentNode)
     }
 
     open() {

@@ -21,26 +21,30 @@ function serializeForm(elements){
     return formData;
 }
 
+function createCat(dataCat){
+    const cardInstance = new Card(dataCat, "#card-template", handleCatTitle);
+    const newCardElement = cardInstance.getElement();
+    cardsContainer.append(newCardElement);
+}
+
 function handleFormAddCat(e){
     e.preventDefault();
     const elementsFormCat = [...formCatAdd.elements];
     const dataFormForm = serializeForm(elementsFormCat);
 
-    const cardInstance = new Card(dataFormForm, "#card-template");
-    const newCardElement = cardInstance.getElement();
-    cardsContainer.append(newCardElement);
-
-    popupAddCat.close();
+    api.addNewCat(dataFormForm)
+        .then(()=>{
+            createCat(dataFormForm);
+            popupAddCat.close();
+        });
 }
 
 api.getAllCats()
     .then(({data})=>{
         data.forEach(function (catData) {
-            const cardInstance = new Card(catData, "#card-template");
-            const newCardElement = cardInstance.getElement();
-            cardsContainer.append(newCardElement);
+            createCat(catData);
         });
-    })
+    });
 
 
 
@@ -48,8 +52,20 @@ const popupAddCat = new Popup('popup-add-cats');
 
 popupAddCat.setEventListener();
 
+const popupCatInfo = new Popup('popup-cat-info');
+popupCatInfo.setEventListener();
+
+function handleCatTitle(cardInstans){
+    catsInfoInstance.setData(cardInstans);
+    popupCatInfo.setContent(catsInfoElement);
+    popupCatInfo.open();
+}
+
+const catsInfoInstance = new CatsInfo('#cats-info-template');
+
+const catsInfoElement = catsInfoInstance.getElement();
+
 btnOpenPopupForm.addEventListener('click', () => popupAddCat.open());
 formCatAdd.addEventListener('submit', handleFormAddCat);
 
 popupAddCat.close();
-// console.log(popupAddCat);

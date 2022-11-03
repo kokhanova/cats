@@ -54,6 +54,12 @@
             </form>
         </div>
     </div>
+    <div class="popup popup-cat-info">
+        <div class="popup__container">
+            <button class="popup__close button"><i class="fa-solid fa-xmark"></i></button>
+            <div class="popup__content"></div>
+        </div>
+    </div>
     <template id="card-template">
         <div class="card">
             <img class="card__image" src="./images/1.1.jpg" alt="Изображение кота Саймона">
@@ -61,10 +67,30 @@
             <button class="card__like" aria-label="Поставить лайк"><i class="fa-solid fa-heart fa-2x"></i></button>
         </div>
     </template>
+    <template id="cats-info-template">
+        <div class="cat-info">
+            <img src="#" class="cat-info__image" loading="lazy">
+            <div class="cat-info__about__id">
+                <span style="font-size: 20.6px; font-weight: 500;">ID:</span>
+                <span class="cat-info__id"></span>
+            </div>
+            
+            <div class="cat-info__title">
+                <h2 class="cat-info__name"></h2>
+                <button class="cat-info__favourite"><i class="fa-solid fa-heart fa-2x"></i></button>
+            </div>
+            <div class="cat-info__about__age">
+                <span>Возраст: </span>
+                <div class="cat-info__age"></div>
+            </div>
+            <p class="cat-info__desc"></p>
+        </div>
+    </template>
     <script src="./script/cats.js" defer></script>
     <script src="./script/api.js" defer></script>
     <script src="./script/card.js" defer></script>
     <script src="./script/popup.js" defer></script>
+    <script src="./script/cats-info.js" defer></script>
     <script src="./script/index.js" defer></script>
 </body>
 </html>
