@@ -6,31 +6,33 @@ class Card {
     }
 
     _getTempate() {
-        return document.querySelector(this._selectorTemplate).content.querySelector(".card");
+        return document
+            .querySelector(this._selectorTemplate)
+            .content.querySelector(".card");
     }
 
     getElement() {
-        this.element = this._getTempate().cloneNode(true); 
+        this.element = this._getTempate().cloneNode(true);
         this.cardTitle = this.element.querySelector(".card__name");
         this.cardImage = this.element.querySelector(".card__image");
         this.cardLike = this.element.querySelector(".card__like");
 
         if (!this._data.favourite) {
-        this.cardLike.remove();
-    }
+            this.cardLike.remove();
+        }
 
-    this.cardTitle.textContent = this._data.name;
+        this.cardTitle.textContent = this._data.name;
         this.cardImage.src = this._data.img_link;
 
         this.setEventListener();
         return this.element;
     }
 
-    getData(){
+    getData() {
         return this._data;
     }
 
-    getId(){
+    getId() {
         return this._data._id;
     }
 
@@ -43,7 +45,9 @@ class Card {
         this.element = null;
     }
 
-        setEventListener(){
-            this.cardTitle.addEventListener('click', () => this._handleCatTitle(this));
-        }
+    setEventListener() {
+        this.cardTitle.addEventListener("click", () =>
+            this._handleCatTitle(this),
+        );
     }
+}
